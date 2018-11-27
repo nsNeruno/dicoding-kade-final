@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item
+			android:id="@+id/matches_fragment"
+			android:title="@string/title_front_page_menu_matches"
+			android:icon="@drawable/ic_soccer"
+		/>
+	<item
+			android:id="@+id/teams_fragment"
+			android:title="@string/title_front_page_menu_teams"
+			android:icon="@drawable/ic_trophy"
+		/>
+	<item
+			android:id="@+id/favorites_fragment"
+			android:title="@string/title_front_page_menu_favorites"
+			android:icon="@drawable/ic_star"
+		/>
+</menu>

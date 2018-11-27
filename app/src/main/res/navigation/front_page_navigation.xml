@@ -1,0 +1,27 @@
+<navigation
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:id="@+id/nav_front_page"
+		app:startDestination="@id/matches_fragment"
+>
+
+	<fragment
+			android:id="@+id/matches_fragment"
+			android:name="dev.neruno.lab.footballapps.views.matches.MatchesFragment"
+			tools:layout="@layout/matches_fragment"
+		/>
+
+	<fragment
+			android:id="@+id/teams_fragment"
+			android:name="dev.neruno.lab.footballapps.views.teams.TeamsFragment"
+			tools:layout="@layout/teams_fragment"
+		/>
+
+	<fragment
+			android:id="@+id/favorites_fragment"
+			android:name="dev.neruno.lab.footballapps.views.favorites.FavoritesFragment"
+			tools:layout="@layout/favorites_fragment"
+		/>
+
+</navigation>

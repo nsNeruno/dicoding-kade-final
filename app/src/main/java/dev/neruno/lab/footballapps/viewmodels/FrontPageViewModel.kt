@@ -1,4 +1,4 @@
-package dev.neruno.lab.footballapps.views
+package dev.neruno.lab.footballapps.viewmodels
 
 import androidx.lifecycle.ViewModel
 

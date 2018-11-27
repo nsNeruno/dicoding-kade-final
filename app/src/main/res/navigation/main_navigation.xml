@@ -3,9 +3,23 @@
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 		xmlns:tools="http://schemas.android.com/tools"
 		android:id="@+id/nav_main"
+		app:startDestination="@id/main_fragment"
 >
 
 	<fragment
+			android:id="@+id/main_fragment"
+			android:name="dev.neruno.lab.footballapps.views.FrontPageFragment"
+			tools:layout="@layout/front_page_fragment"
+		/>
+	<fragment
+			android:id="@+id/match_detail_fragment"
+			android:name="dev.neruno.lab.footballapps.views.matches.MatchDetailFragment"
+			tools:layout="@layout/match_detail_fragment"
+		/>
+	<fragment
+			android:id="@+id/team_detail_fragment"
+			android:name="dev.neruno.lab.footballapps.views.teams.TeamDetailFragment"
+			tools:layout="@layout/team_detail_fragment"
 		/>
 
 </navigation>

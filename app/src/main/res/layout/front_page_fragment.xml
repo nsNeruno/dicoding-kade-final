@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-		xmlns:android="http://schemas.android.com/apk/res/android"
-		xmlns:tools="http://schemas.android.com/tools"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		tools:context=".views.FrontPageFragment">
-
-	<TextView
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+	<RelativeLayout
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:text="Hello"/>
+			tools:context=".views.FrontPageFragment"
+	>
 
-</FrameLayout>
+		<androidx.coordinatorlayout.widget.CoordinatorLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_above="@id/bottom_navigation_front_page"
+		>
+
+			<fragment
+					android:id="@+id/front_page_container_fragment"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:name="androidx.navigation.fragment.NavHostFragment"
+					app:navGraph="@navigation/front_page_navigation"
+					app:defaultNavHost="true"
+					/>
+		</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+		<com.google.android.material.bottomnavigation.BottomNavigationView
+				android:id="@+id/bottom_navigation_front_page"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_alignParentBottom="true"
+				app:menu="@menu/front_page_menu"
+		/>
+
+	</RelativeLayout>
+</layout>
