@@ -22,8 +22,8 @@ class MatchesFragment : Fragment() {
 
     private lateinit var matchesTab: TabLayout
     private lateinit var viewPager: ViewPager
-    private val previousMatchFragment: MatchListFragment = MatchListFragment.newInstance()
-    private val nextMatchFragment: MatchListFragment = MatchListFragment.newInstance()
+    private val previousMatchFragment: MatchListFragment = MatchListFragment.newInstance("past")
+    private val nextMatchFragment: MatchListFragment = MatchListFragment.newInstance("next")
 
     private lateinit var binding: MatchesFragmentBinding
     private lateinit var viewModel: MatchesViewModel

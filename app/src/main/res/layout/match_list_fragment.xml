@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
 	<data>
+		<variable name="viewModel" type="dev.neruno.lab.footballapps.viewmodels.MatchListViewModel" />
+		<variable name="leagueAdapter" type="android.widget.ArrayAdapter" />
+		<variable name="selectedLeagueIndex" type="int" />
 		<variable name="adapter" type="dev.neruno.lab.footballapps.adapters.RecyclerViewAdapter" />
+		<variable name="type" type="String" />
 	</data>
 	<LinearLayout
 			android:layout_width="match_parent"
@@ -10,9 +14,13 @@
 			tools:context=".views.matches.MatchListFragment">
 
 		<Spinner
+				android:id="@+id/spinner_league_match_list"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_margin="16dp"
+				android:adapter="@{leagueAdapter}"
+				android:onItemSelected="@{(parent, view, position, id) -> viewModel.loadMatches(parent, type)}"
+				android:selectedItemPosition="@{selectedLeagueIndex}"
 		/>
 
 		<androidx.recyclerview.widget.RecyclerView

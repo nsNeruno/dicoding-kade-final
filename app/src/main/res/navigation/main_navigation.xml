@@ -22,4 +22,13 @@
 			tools:layout="@layout/team_detail_fragment"
 		/>
 
+	<action
+			android:id="@+id/action_view_event"
+			app:destination="@id/match_detail_fragment"
+		>
+
+		<argument android:name="event" app:argType="dev.neruno.lab.footballapps.data.Event" />
+
+	</action>
+
 </navigation>

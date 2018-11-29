@@ -3,4 +3,15 @@
 	<string name="title_front_page_menu_matches">Matches</string>
 	<string name="title_front_page_menu_teams">Teams</string>
 	<string name="title_front_page_menu_favorites">Favorites</string>
+	<string name="text_VS">VS</string>
+	<string name="cd_home_team_logo">Home Team Logo</string>
+	<string name="cd_away_team_logo">Away Team Logo</string>
+	<string name="text_goals">Goals</string>
+	<string name="text_shots">Shots</string>
+	<string name="text_lineups">Lineups</string>
+	<string name="text_goal_keeper">Goal Keeper</string>
+	<string name="text_defense">Defense</string>
+	<string name="text_substitutes">Substitutes</string>
+	<string name="text_midfield">Midfield</string>
+	<string name="text_forward">Forward</string>
 </resources>

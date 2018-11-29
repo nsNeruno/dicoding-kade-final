@@ -12,7 +12,7 @@ class RecyclerViewAdapter<T, B>(
     private val onBindItem: (B, T) -> Unit,
     private val onItemClick: (T) -> Unit)
     : RecyclerView.Adapter<RecyclerViewAdapter<T, B>.ViewHolder<B>>()
-        where B : androidx.databinding.ViewDataBinding {
+        where B : ViewDataBinding {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<B> {
         return ViewHolder(
@@ -31,7 +31,7 @@ class RecyclerViewAdapter<T, B>(
         return items.size
     }
 
-    inner class ViewHolder<B>(private val binding: B) : RecyclerView.ViewHolder(binding.root) where B : androidx.databinding.ViewDataBinding {
+    inner class ViewHolder<B>(private val binding: B) : RecyclerView.ViewHolder(binding.root) where B : ViewDataBinding {
 
         fun getBinding(): B {
             return binding

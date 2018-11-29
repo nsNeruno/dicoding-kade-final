@@ -1,14 +1,365 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-		xmlns:android="http://schemas.android.com/apk/res/android"
-		xmlns:tools="http://schemas.android.com/tools"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		tools:context=".views.matches.MatchDetailFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+	<data>
+		<import type="dev.neruno.lab.footballapps.utilities.Utilities" />
+		<variable name="event" type="dev.neruno.lab.footballapps.data.Event" />
+	</data>
+	<ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
 
-	<TextView
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:text="Hello"/>
+		<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+		              android:orientation="vertical"
+		>
 
-</FrameLayout>
+			<androidx.cardview.widget.CardView android:layout_width="match_parent"
+			                                   android:layout_height="wrap_content"
+			                                   app:cardElevation="8dp"
+			                                   android:layout_margin="16dp"
+			>
+
+				<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+				              android:orientation="vertical"
+				>
+
+					<TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+					          android:gravity="center"
+					          tools:text="Wed, 28 Nov 2018"
+					          android:text="@{event.getShortDate()}"
+					          android:layout_margin="8dp"
+					/>
+					<TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+					          android:gravity="center"
+					          tools:text="12:00"
+					          android:text="@{event.getShortTime()}"
+					          android:layout_margin="8dp"
+					/>
+
+				</LinearLayout>
+
+			</androidx.cardview.widget.CardView>
+
+			<androidx.cardview.widget.CardView android:layout_width="match_parent"
+			                                   android:layout_height="wrap_content"
+			                                   app:cardElevation="8dp"
+			                                   android:layout_margin="16dp"
+			>
+
+				<RelativeLayout android:layout_width="match_parent"
+				                android:layout_height="wrap_content">
+
+					<LinearLayout android:layout_width="match_parent"
+					              android:layout_height="wrap_content"
+					              android:orientation="vertical"
+					              android:layout_toLeftOf="@id/text_match_detail_home_score"
+					              android:layout_toStartOf="@id/text_match_detail_home_score"
+					              android:padding="16dp"
+					>
+
+						<ImageView android:layout_width="match_parent" android:layout_height="100dp"
+						           android:id="@+id/image_match_detail_home"
+						           android:scaleType="centerCrop"
+						           android:contentDescription="@string/cd_home_team_logo"/>
+
+						<TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+						          tools:text="Google"
+						          android:gravity="center"
+						          android:text="@{event.homeTeam}"
+						/>
+
+					</LinearLayout>
+
+					<LinearLayout android:layout_width="match_parent"
+					              android:layout_height="wrap_content"
+					              android:orientation="vertical"
+					              android:layout_toRightOf="@id/text_match_detail_away_score"
+					              android:layout_toEndOf="@id/text_match_detail_away_score"
+					              android:padding="16dp"
+					>
+
+						<ImageView android:layout_width="match_parent" android:layout_height="100dp"
+						           android:id="@+id/image_match_detail_away"
+						           android:scaleType="centerCrop"
+						           android:contentDescription="@string/cd_away_team_logo"
+						/>
+
+						<TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+						          android:id="@+id/text_match_detail_away_team"
+						          tools:text="Apple"
+						          android:gravity="center"
+
+						          android:text="@{event.awayTeam}"
+						/>
+
+					</LinearLayout>
+
+					<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+					          android:id="@+id/text_match_detail_vs"
+					          android:layout_centerInParent="true"
+					          android:text="@string/text_VS"
+					/>
+
+					<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+					          android:id="@+id/text_match_detail_home_score"
+					          tools:text="0"
+					          android:gravity="center"
+					          android:textStyle="bold"
+					          android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+					          android:layout_toLeftOf="@id/text_match_detail_vs"
+					          android:layout_toStartOf="@id/text_match_detail_vs"
+					          android:layout_centerVertical="true"
+					          android:layout_margin="16dp"
+					          android:text="@{event.homeScore ?? ``}"
+					/>
+
+					<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+					          android:id="@+id/text_match_detail_away_score"
+					          tools:text="1"
+					          android:gravity="center"
+					          android:textStyle="bold"
+					          android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+					          android:layout_toRightOf="@id/text_match_detail_vs"
+					          android:layout_toEndOf="@id/text_match_detail_vs"
+					          android:layout_centerVertical="true"
+					          android:layout_margin="16sp"
+					          android:text="@{event.awayScore ?? ``}"
+					/>
+
+				</RelativeLayout>
+
+			</androidx.cardview.widget.CardView>
+
+			<androidx.cardview.widget.CardView android:layout_width="match_parent"
+			                                   android:layout_height="wrap_content"
+			                                   app:cardElevation="8dp"
+			                                   android:layout_margin="16dp"
+			>
+
+				<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+				              android:orientation="vertical"
+				>
+
+					<LinearLayout android:layout_width="match_parent"
+					              android:layout_height="wrap_content"
+					              android:orientation="horizontal"
+					              android:weightSum="0.9"
+					              android:layout_margin="16dp"
+					>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="top|start"
+						          android:text="@{Utilities.cleanSportsDbApiString(event.homeGoalDetails)}"
+						/>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="center_horizontal|top"
+						          android:text="@string/text_goals"
+						          android:textStyle="bold"
+						/>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="top|end"
+						          android:text="@{Utilities.cleanSportsDbApiString(event.awayGoalDetails)}"
+						/>
+
+					</LinearLayout>
+
+					<LinearLayout android:layout_width="match_parent"
+					              android:layout_height="wrap_content"
+					              android:orientation="horizontal"
+					              android:weightSum="0.9"
+					              android:layout_margin="16dp"
+					>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="top|start"
+						          android:text="@{event.homeShots ?? ``}"
+						/>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="center_horizontal|top"
+						          android:text="@string/text_shots"
+						          android:textStyle="bold"
+						/>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="top|end"
+						          android:text="@{event.awayShots ?? ``}"
+						/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+			</androidx.cardview.widget.CardView>
+
+			<androidx.cardview.widget.CardView android:layout_width="match_parent"
+			                                   android:layout_height="wrap_content"
+			                                   app:cardElevation="8dp"
+			                                   android:layout_margin="16dp"
+			>
+
+				<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+				              android:orientation="vertical"
+				>
+
+					<TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+					          android:text="@string/text_lineups"
+					          android:gravity="center"
+					          android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+					          android:layout_margin="8dp"
+					/>
+
+					<LinearLayout android:layout_width="match_parent"
+					              android:layout_height="wrap_content"
+					              android:orientation="horizontal"
+					              android:weightSum="0.9"
+					              android:layout_margin="16dp"
+					>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="top|start"
+						          android:text="@{Utilities.cleanSportsDbApiString(event.homeGoalkeeper)}"
+						/>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="center_horizontal|top"
+						          android:text="@string/text_goal_keeper"
+						          android:textStyle="bold"
+						/>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="top|end"
+						          android:text="@{Utilities.cleanSportsDbApiString(event.awayGoalkeeper)}"
+						/>
+
+					</LinearLayout>
+
+					<LinearLayout android:layout_width="match_parent"
+					              android:layout_height="wrap_content"
+					              android:orientation="horizontal"
+					              android:weightSum="0.9"
+					              android:layout_margin="16dp"
+					>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="top|start"
+						          android:text="@{Utilities.cleanSportsDbApiString(event.homeDefense)}"
+						/>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="center_horizontal|top"
+						          android:text="@string/text_defense"
+						          android:textStyle="bold"
+						/>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="top|end"
+						          android:text="@{Utilities.cleanSportsDbApiString(event.awayDefense)}"
+						/>
+
+					</LinearLayout>
+
+					<LinearLayout android:layout_width="match_parent"
+					              android:layout_height="wrap_content"
+					              android:orientation="horizontal"
+					              android:weightSum="0.9"
+					              android:layout_margin="16dp"
+					>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="top|start"
+						          android:text="@{Utilities.cleanSportsDbApiString(event.homeMidfield)}"
+						/>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="center_horizontal|top"
+						          android:text="@string/text_midfield"
+						          android:textStyle="bold"
+						/>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="top|end"
+						          android:text="@{Utilities.cleanSportsDbApiString(event.awayMidfield)}"
+						/>
+
+					</LinearLayout>
+
+					<LinearLayout android:layout_width="match_parent"
+					              android:layout_height="wrap_content"
+					              android:orientation="horizontal"
+					              android:weightSum="0.9"
+					              android:layout_margin="16dp"
+					>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="top|start"
+						          android:text="@{Utilities.cleanSportsDbApiString(event.homeForward)}"
+						/>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="center_horizontal|top"
+						          android:text="@string/text_forward"
+						          android:textStyle="bold"
+						/>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="top|end"
+						          android:text="@{Utilities.cleanSportsDbApiString(event.awayForward)}"
+						/>
+
+					</LinearLayout>
+
+					<LinearLayout android:layout_width="match_parent"
+					              android:layout_height="wrap_content"
+					              android:orientation="horizontal"
+					              android:weightSum="0.9"
+					              android:layout_margin="16dp"
+					>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="top|start"
+						          android:text="@{Utilities.cleanSportsDbApiString(event.homeSubstitutes)}"
+						/>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="center_horizontal|top"
+						          android:text="@string/text_substitutes"
+						          android:textStyle="bold"
+						/>
+
+						<TextView android:layout_width="0dp" android:layout_height="wrap_content"
+						          android:layout_weight="0.3"
+						          android:gravity="top|end"
+						          android:text="@{Utilities.cleanSportsDbApiString(event.awaySubstitutes)}"
+						/>
+
+					</LinearLayout>
+
+				</LinearLayout>
+
+			</androidx.cardview.widget.CardView>
+
+		</LinearLayout>
+
+	</ScrollView>
+</layout>
